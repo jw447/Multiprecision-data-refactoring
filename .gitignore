@@ -1,0 +1,5 @@
+# ignore external dependencies
+external/MGARDx
+external/SZ
+external/SZ3
+external/compression_utils
