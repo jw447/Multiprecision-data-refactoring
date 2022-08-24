@@ -68,7 +68,7 @@ namespace MDR {
     private:
         ErrorEstimator error_estimator;
     };
-    // greedy bit-plane retrieval with sign exculsion (excluding the first component)
+    // greedy bit-plane retrieval with sign exculsion (excluding the first component) - default - jwang 08/24
     template<class ErrorEstimator>
     class SignExcludeGreedyBasedSizeInterpreter : public concepts::SizeInterpreterInterface {
     public:
@@ -76,12 +76,12 @@ namespace MDR {
             error_estimator = e;
         }
         std::vector<uint32_t> interpret_retrieve_size(const std::vector<std::vector<uint32_t>>& level_sizes, const std::vector<std::vector<double>>& level_errors, double tolerance, std::vector<uint8_t>& index) const {
-            for(int i=0; i<level_errors.size(); i++){
-                for(int j=0; j<level_errors[i].size(); j++){
-                    std::cout << level_errors[i][j] << " ";
-                }
-                std::cout << std::endl;
-            }
+            //for(int i=0; i<level_errors.size(); i++){
+            //    for(int j=0; j<level_errors[i].size(); j++){
+            //        std::cout << level_errors[i][j] << " ";
+            //    }
+            //    std::cout << std::endl;
+            //}
             int num_levels = level_sizes.size();
             std::vector<uint32_t> retrieve_sizes(num_levels, 0);
             double accumulated_error = 0;
@@ -100,7 +100,7 @@ namespace MDR {
                     accumulated_error -= error_estimator.estimate_error(level_errors[i][index[i]], i);
                     accumulated_error += error_estimator.estimate_error(level_errors[i][index[i] + 1], i);
                     index[i] ++;
-                    std::cout << i;
+                    //std::cout << i;
                 }
                 // push the next one
                 if(index[i] != level_sizes[i].size()){
@@ -131,10 +131,10 @@ namespace MDR {
                     double error_gain = error_estimator.estimate_error_gain(accumulated_error, level_errors[i][index[i]], level_errors[i][index[i] + 1], i);
                     heap.push(UnitErrorGain(error_gain / level_sizes[i][index[i]], i));
                 }
-                std::cout << i;
+                //std::cout << i;
             }
-            std::cout << std::endl;
-            std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
+            //std::cout << std::endl;
+            //std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
             return retrieve_sizes;
         }
         void print() const {
@@ -213,10 +213,10 @@ namespace MDR {
                 if(index[i] != level_sizes[i].size()){
                     heap.push(estimated_efficiency(accumulated_error, index[i], i, level_errors[i], level_sizes[i]));
                 }
-                for(int k=0; k<num; k++) std::cout << i;
+                //for(int k=0; k<num; k++) std::cout << i;
             }
-            std::cout << std::endl;
-            std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
+            //std::cout << std::endl;
+            //std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
             return retrieve_sizes;
         }
         void print() const {

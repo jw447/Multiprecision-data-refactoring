@@ -30,11 +30,12 @@ namespace MDR {
             // if refactor successfully
             if(refactor(target_level, num_bitplanes)){
                 timer.end();
-                timer.print("Refactor");
+                //timer.print("Refactor");
+		//std::cout << "End of Refactor \n";
                 timer.start();
                 level_num = writer.write_level_components(level_components, level_sizes);
                 timer.end();
-                timer.print("Write");                
+                //timer.print("Write");                
             }
 
             write_metadata();
@@ -83,7 +84,7 @@ namespace MDR {
             timer.start();
             decomposer.decompose(data.data(), dimensions, target_level);
             timer.end();
-            timer.print("Decompose");
+            //timer.print("Decompose");
 
             // encode level by level
             level_error_bounds.clear();
@@ -104,7 +105,7 @@ namespace MDR {
                 T level_max_error = compute_max_abs_value(reinterpret_cast<T*>(buffer), level_elements[i]);
                 level_error_bounds.push_back(level_max_error);
                 timer.end();
-                timer.print("Interleave");
+                //timer.print("Interleave");
                 // collect errors
                 // auto collected_error = s_collector.collect_level_error(buffer, level_elements[i], num_bitplanes, level_max_error);
                 // level_squared_errors.push_back(collected_error);
@@ -118,7 +119,7 @@ namespace MDR {
                 free(buffer);
                 level_squared_errors.push_back(level_sq_err);
                 timer.end();
-                timer.print("Encoding");
+                //timer.print("Encoding");
                 timer.start();
                 // lossless compression
                 uint8_t stopping_index = compressor.compress_level(streams, stream_sizes);
@@ -127,9 +128,9 @@ namespace MDR {
                 level_components.push_back(streams);
                 level_sizes.push_back(stream_sizes);
                 timer.end();
-                timer.print("Lossless time");
+                //timer.print("Lossless time");
             }
-            print_vec("level sizes", level_sizes);
+            //print_vec("level sizes", level_sizes);
             return true;
         }
 

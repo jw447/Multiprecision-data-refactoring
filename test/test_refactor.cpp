@@ -14,11 +14,11 @@ template <class T, class Refactor>
 void evaluate(const vector<T>& data, const vector<uint32_t>& dims, int target_level, int num_bitplanes, Refactor refactor){
     struct timespec start, end;
     int err = 0;
-    cout << "Start refactoring" << endl;
+    //cout << "Start refactoring" << endl;
     err = clock_gettime(CLOCK_REALTIME, &start);
     refactor.refactor(data.data(), dims, target_level, num_bitplanes);
     err = clock_gettime(CLOCK_REALTIME, &end);
-    cout << "Refactor time: " << (double)(end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec)/(double)1000000000 << "s" << endl;
+    //cout << "Refactor time: " << (double)(end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec)/(double)1000000000 << "s" << endl;
 }
 
 template <class T, class Decomposer, class Interleaver, class Encoder, class Compressor, class ErrorCollector, class Writer>
@@ -27,6 +27,7 @@ void test(string filename, const vector<uint32_t>& dims, int target_level, int n
     size_t num_elements = 0;
     auto data = MGARD::readfile<T>(filename.c_str(), num_elements);
     evaluate(data, dims, target_level, num_bitplanes, refactor);
+    //cout << "end of test<double>" << endl;
 }
 
 int main(int argc, char ** argv){
@@ -51,12 +52,13 @@ int main(int argc, char ** argv){
         string filename = "refactored_data/level_" + to_string(i) + ".bin";
         files.push_back(filename);
     }
-    using T = float;
+    // jwang 08/24
+    using T = double;
     using T_stream = uint32_t;
-    if(num_bitplanes > 32){
-        num_bitplanes = 32;
-        std::cout << "Only less than 32 bitplanes are supported for single-precision floating point" << std::endl;
-    }
+    //if(num_bitplanes > 32){
+    //    num_bitplanes = 32;
+    //    std::cout << "Only less than 32 bitplanes are supported for single-precision floating point" << std::endl;
+    //}
     auto decomposer = MDR::MGARDOrthoganalDecomposer<T>();
     // auto decomposer = MDR::MGARDHierarchicalDecomposer<T>();
     auto interleaver = MDR::DirectInterleaver<T>();

@@ -28,7 +28,7 @@ namespace MDR {
             uint8_t target_level = level_error_bounds.size() - 1;
             std::vector<std::vector<double>>& level_errors = level_squared_errors;
             if(std::is_base_of<MaxErrorEstimator<T>, ErrorEstimator>::value){
-                std::cout << "ErrorEstimator is base of MaxErrorEstimator, computing absolute error" << std::endl;
+                //std::cout << "ErrorEstimator is base of MaxErrorEstimator, computing absolute error" << std::endl;
                 MaxErrorCollector<T> collector = MaxErrorCollector<T>();
                 for(int i=0; i<=target_level; i++){
                     auto collected_error = collector.collect_level_error(NULL, 0, level_squared_errors[i].size(), level_error_bounds[i]);
@@ -44,7 +44,7 @@ namespace MDR {
                 exit(-1);
             }
             timer.end();
-            timer.print("Preprocessing");            
+            //timer.print("Preprocessing");            
 
             timer.start();
             auto prev_level_num_bitplanes(level_num_bitplanes);
@@ -62,7 +62,7 @@ namespace MDR {
             // TODO: uncomment skip level to reconstruct low resolution data
             // target_level -= skipped_level;
             timer.end();
-            timer.print("Interpret and retrieval");
+            //timer.print("Interpret and retrieval");
 
             bool success = reconstruct(target_level, prev_level_num_bitplanes);
             retriever.release();
@@ -134,7 +134,7 @@ namespace MDR {
             data.clear();
             data = std::vector<T>(num_elements, 0);
             timer.end();
-            timer.print("Reconstruct Preprocessing");            
+            //timer.print("Reconstruct Preprocessing");            
 
             auto level_elements = compute_level_elements(level_dims, target_level);
             std::vector<uint32_t> dims_dummy(reconstruct_dimensions.size(), 0);
@@ -142,26 +142,26 @@ namespace MDR {
                 timer.start();
                 compressor.decompress_level(level_components[i], level_sizes[i], prev_level_num_bitplanes[i], level_num_bitplanes[i] - prev_level_num_bitplanes[i], stopping_indices[i]);
                 timer.end();
-                timer.print("Lossless");            
+                //timer.print("Lossless");            
                 timer.start();
                 int level_exp = 0;
                 frexp(level_error_bounds[i], &level_exp);
                 auto level_decoded_data = encoder.progressive_decode(level_components[i], level_elements[i], level_exp, prev_level_num_bitplanes[i], level_num_bitplanes[i] - prev_level_num_bitplanes[i], i);
                 compressor.decompress_release();
                 timer.end();
-                timer.print("Decoding");            
+                //timer.print("Decoding");
 
                 timer.start();
                 const std::vector<uint32_t>& prev_dims = (i == 0) ? dims_dummy : level_dims[i - 1];
                 interleaver.reposition(level_decoded_data, reconstruct_dimensions, level_dims[i], prev_dims, data.data());
                 free(level_decoded_data);
                 timer.end();
-                timer.print("Reposition");            
+                //timer.print("Reposition");            
             }
             timer.start();
             decomposer.recompose(data.data(), reconstruct_dimensions, target_level);
             timer.end();
-            timer.print("Recomposing");            
+            //timer.print("Recomposing");            
             return true;
         }
 
