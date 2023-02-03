@@ -1,0 +1,156 @@
+fatal: destination path 'SZ' already exists and is not an empty directory.
+HEAD is now at f48d2f2 update the version number
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/build
+Consolidate compiler generated dependencies of target SZ
+[ 80%] Built target SZ
+Consolidate compiler generated dependencies of target testint_decompress
+Consolidate compiler generated dependencies of target testdouble_compress
+Consolidate compiler generated dependencies of target sz
+Consolidate compiler generated dependencies of target testint_compress
+Consolidate compiler generated dependencies of target testfloat_decompress
+Consolidate compiler generated dependencies of target testfloat_compress
+Consolidate compiler generated dependencies of target testdouble_decompress
+[ 83%] Built target testfloat_decompress
+[ 86%] Built target testint_decompress
+[ 91%] Built target testint_compress
+[ 91%] Built target testdouble_compress
+[ 94%] Built target sz
+[ 97%] Built target testfloat_compress
+[100%] Built target testdouble_decompress
+[ 80%] Built target SZ
+[ 83%] Built target testint_compress
+[ 86%] Built target testint_decompress
+[ 89%] Built target testfloat_compress
+[ 91%] Built target testfloat_decompress
+[ 94%] Built target testdouble_compress
+[ 97%] Built target testdouble_decompress
+[100%] Built target sz
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/share/pkgconfig/sz.pc
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/lib64/libSZ.so
+-- Old export file "/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/share/SZ/cmake/SZConfig.cmake" will be replaced.  Removing files [/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/share/SZ/cmake/SZConfig-release.cmake].
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/share/SZ/cmake/SZConfig.cmake
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/share/SZ/cmake/SZConfig-release.cmake
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_opencl.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/dictionary.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/VarSet.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_double.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/TightDataPointStorageF.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_omp.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/defines.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_stats.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/pastriF.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_int8.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/TypeManager.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_uint8.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/MultiLevelCacheTableWideInterval.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_uint16.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_float.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_uint32.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_float.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_uint8.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_float_ts.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/CacheTable.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_uint64.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/TightDataPointStorageD.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/pastriGeneral.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_float_pwr.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_double_ts.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_uint32.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_int64.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/rw.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_int64.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_int32.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/pastri.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_float_ts.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/ArithmeticCoding.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_uint16.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/DynamicDoubleArray.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_float_pwr.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_int16.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_int32.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_double_pwr.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_uint64.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/callZlib.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/DynamicByteArray.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_double.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/DynamicIntArray.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/utility.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/exafelSZ.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/sz_int16.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/conf.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_double_pwr.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/pastriD.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_double_ts.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szf.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/DynamicFloatArray.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/CompressElement.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/MultiLevelCacheTable.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/TightDataPointStorageI.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/ByteToolkit.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/Huffman.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/szd_int8.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/dataCompression.h
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/include/sz/iniparser.h
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testint_compress
+-- Set runtime path of "/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testint_compress" to ""
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testint_decompress
+-- Set runtime path of "/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testint_decompress" to ""
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testfloat_compress
+-- Set runtime path of "/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testfloat_compress" to ""
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testfloat_decompress
+-- Set runtime path of "/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testfloat_decompress" to ""
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testdouble_compress
+-- Set runtime path of "/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testdouble_compress" to ""
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testdouble_decompress
+-- Set runtime path of "/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/testdouble_decompress" to ""
+-- Installing: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/sz
+-- Set runtime path of "/gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ/install/bin/sz" to ""
+fatal: destination path 'SZ3' already exists and is not an empty directory.
+HEAD is now at 7fa420d bugfix
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/SZ3/build
+Consolidate compiler generated dependencies of target SZ3
+[ 25%] Built target SZ3
+Consolidate compiler generated dependencies of target sz_huffman_test
+Consolidate compiler generated dependencies of target sz_demo
+Consolidate compiler generated dependencies of target sz_test
+[ 50%] Built target sz_huffman_test
+[ 75%] Built target sz_test
+[100%] Built target sz_demo
+fatal: destination path 'MGARDx' already exists and is not an empty directory.
+HEAD is now at 28d738c add decomposition with hierarchical basis
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/MGARDx/build
+Consolidate compiler generated dependencies of target test_decompose
+[100%] Built target test_decompose
+[100%] Built target test_decompose
+Install the project...
+-- Install configuration: ""
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/MGARDx/install/include
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/MGARDx/install/include/utils.hpp
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/MGARDx/install/include/decompose.hpp
+-- Up-to-date: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/external/MGARDx/install/include/recompose.hpp
+fatal: destination path 'compression_utils' already exists and is not an empty directory.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /gpfs/alpine/proj-shared/csc143/jwang/io_modeling/ExternalDependencies/Multiprecision-data-refactoring/build
+Consolidate compiler generated dependencies of target test_decomposer
+Consolidate compiler generated dependencies of target test_reconstructor
+Consolidate compiler generated dependencies of target test_refactor
+Consolidate compiler generated dependencies of target test_error_collector
+Consolidate compiler generated dependencies of target test_interleaver
+Consolidate compiler generated dependencies of target test_encoder
+[ 16%] Built target test_decomposer
+[ 41%] Built target test_error_collector
+[ 50%] Built target test_encoder
+[ 83%] Built target test_refactor
+[ 83%] Built target test_interleaver
+[100%] Built target test_reconstructor

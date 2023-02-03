@@ -11,6 +11,8 @@
 
 using namespace std;
 
+vector<double> cc(5, 1);
+
 template <class T>
 void print_statistics(const T * data_ori, const T * data_dec, size_t data_size){
     double max_val = data_ori[0];
@@ -34,8 +36,7 @@ void print_statistics(const T * data_ori, const T * data_dec, size_t data_size){
     }
     mse /= data_size;
     double psnr = 20 * log10((max_val - min_val) / sqrt(mse));
-    cout << "MaxErr," << max_err << ",";
-    cout << "MSE," << mse << ",PSNR," << psnr << endl;
+    cout << "MaxErr," << max_err << "," << "MSE," << mse << ",PSNR," << psnr << endl;
 }
 
 template <class T, class Reconstructor>
@@ -93,6 +94,11 @@ int main(int argc, char ** argv){
         num_levels = metadata[num_dims * sizeof(uint32_t) + 1];
         //cout << "number of dimension = " << num_dims << ", number of levels = " << num_levels << endl;
     }
+
+    for(int i=0; i<num_levels; i++){
+        cc[i] = atof(argv[argv_id ++]);
+    }
+    
     vector<string> files;
     for(int i=0; i<num_levels; i++){
         string filename = "refactored_data/level_" + to_string(i) + ".bin";

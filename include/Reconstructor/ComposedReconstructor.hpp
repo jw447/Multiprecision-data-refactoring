@@ -12,6 +12,7 @@
 #include "LosslessCompressor/LevelCompressor.hpp"
 #include "RefactorUtils.hpp"
 
+
 namespace MDR {
     // a decomposition-based scientific data reconstructor: inverse operator of composed refactor
     template<class T, class Decomposer, class Interleaver, class Encoder, class Compressor, class SizeInterpreter, class ErrorEstimator, class Retriever>
