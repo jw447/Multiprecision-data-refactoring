@@ -95,6 +95,11 @@ int main(int argc, char ** argv){
         //cout << "number of dimension = " << num_dims << ", number of levels = " << num_levels << endl;
     }
 
+    cc[0] = 1.0 + 21.0*sqrt(3)/8;
+    cc[1] = 1.0 + 21.0*sqrt(3)/8;
+    cc[2] = 1.0 + 21.0*sqrt(3)/8;
+    cc[3] = 1.0 + 21.0*sqrt(3)/8;
+    cc[4] = 1.0 + 21.0*sqrt(3)/8;
     for(int i=0; i<num_levels; i++){
         cc[i] = atof(argv[argv_id ++]);
     }

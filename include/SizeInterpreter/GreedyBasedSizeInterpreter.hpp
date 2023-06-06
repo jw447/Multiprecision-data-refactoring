@@ -86,10 +86,13 @@ namespace MDR {
             //    std::cout << std::endl;
             //}
 	    
-	    std::cout << cc[0] <<"," << cc[1] <<"," << cc[2] <<"," << cc[3] <<"," << cc[4]<<",";
 	    //c = 1.0 + 21.0*sqrt(3)/8;
 
             int num_levels = level_sizes.size();
+            for(int i=0; i< num_levels; i++){
+		    std::cout << cc[i] <<",";
+	    }
+
             std::vector<uint32_t> retrieve_sizes(num_levels, 0);
             double accumulated_error = 0;
             for(int i=0; i<num_levels; i++){
@@ -234,7 +237,7 @@ namespace MDR {
                 //for(int k=0; k<num; k++) std::cout << i;
             }
             //std::cout << std::endl;
-            //std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
+            std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
             return retrieve_sizes;
         }
         void print() const {
