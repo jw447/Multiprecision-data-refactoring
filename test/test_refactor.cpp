@@ -5,6 +5,9 @@
 #include <iomanip>
 #include <cmath>
 #include <bitset>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 #include "utils.hpp"
 #include "Refactor/Refactor.hpp"
 
@@ -45,15 +48,40 @@ int main(int argc, char ** argv){
     for(int i=0; i<num_dims; i++){
         dims[i] = atoi(argv[argv_id ++]);
     }
+    
+    // ----------- extract foldername --------------------
+    int length = filename.length();
+    char* foldername = new char[length + 1];
+    strcpy(foldername, filename.c_str());
+    //std::cout << foldername << std::endl;
 
-    string metadata_file = "refactored_data/metadata.bin";
+    // loop through the string to extract all other tokens
+    char * token_ = strtok(foldername, "/");
+    while( foldername != NULL ) {
+      token_ = foldername;
+      //std::cout << foldername << std::endl;
+      foldername = strtok(NULL, "/");
+    }
+    //std::cout << token_ << std::endl;
+
+    // foldername is token_ now
+    struct stat st = {0};
+    if (stat(token_, &st) == -1) {
+            mkdir(token_, 0700);
+    }
+    // ---------------------------------------------------
+
+    //string metadata_file = "refactored_data/metadata.bin";
+    string metadata_file = string(token_) + "/metadata.bin";
     vector<string> files;
     for(int i=0; i<=target_level; i++){
-        string filename = "refactored_data/level_" + to_string(i) + ".bin";
+        //string filename = "refactored_data/level_" + to_string(i) + ".bin";
+        string filename = string(token_) + "/level_" + to_string(i) + ".bin";
         files.push_back(filename);
     }
+
     // jwang 08/24
-    using T = double;
+    using T = float;
     using T_stream = uint32_t;
     //if(num_bitplanes > 32){
     //    num_bitplanes = 32;

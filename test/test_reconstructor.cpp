@@ -80,9 +80,26 @@ int main(int argc, char ** argv){
     for(int i=0; i<num_tolerance; i++){
         tolerance[i] = atof(argv[argv_id ++]);    
     }
+
+    // ----------- extract foldername --------------------
+    int length = filename.length();
+    char* foldername = new char[length + 1];
+    strcpy(foldername, filename.c_str());
+    //std::cout << foldername << std::endl;
+
+    // loop through the string to extract all other tokens
+    char * token_ = strtok(foldername, "/");
+    while( foldername != NULL ) {
+      token_ = foldername;
+      //std::cout << foldername << std::endl;
+      foldername = strtok(NULL, "/");
+    }
+    //std::cout << token_ << std::endl;
+    // ---------------------------------------------------
+
     double s = atof(argv[argv_id ++]);
 
-    string metadata_file = "refactored_data/metadata.bin";
+    string metadata_file = string(token_) + "/metadata.bin";
     int num_levels = 0;
     int num_dims = 0;
     {
@@ -106,11 +123,11 @@ int main(int argc, char ** argv){
     
     vector<string> files;
     for(int i=0; i<num_levels; i++){
-        string filename = "refactored_data/level_" + to_string(i) + ".bin";
+        string filename = string(token_) + "/level_" + to_string(i) + ".bin";
         files.push_back(filename);
     }
 
-    using T = double;
+    using T = float;
     using T_stream = uint32_t;
     auto decomposer = MDR::MGARDOrthoganalDecomposer<T>();
     // auto decomposer = MDR::MGARDHierarchicalDecomposer<T>();
