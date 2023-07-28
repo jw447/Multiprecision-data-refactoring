@@ -33,6 +33,17 @@ void test(string filename, const vector<uint32_t>& dims, int target_level, int n
     //cout << "end of test<double>" << endl;
 }
 
+//void append(char s, char c) {
+//        int len = strlen(s);
+//        char ss;
+//	ss[0] = c;
+//        ss[1] = s;
+//	const char temp = "\0";
+//	char tmp = (char)temp;
+//	ss[len+2] = tmp;
+//	s = ss;
+//}
+
 int main(int argc, char ** argv){
 
     int argv_id = 1;
@@ -65,6 +76,13 @@ int main(int argc, char ** argv){
     //std::cout << token_ << std::endl;
 
     // foldername is token_ now
+    strtok(token_, ".");
+    //std::cout << string(token_) + "_" << std::endl;
+    std::string token_str = "_" + string(token_);
+
+    token_ = new char[token_str.length()];
+    strcpy(token_, token_str.c_str());
+
     struct stat st = {0};
     if (stat(token_, &st) == -1) {
             mkdir(token_, 0700);
@@ -78,10 +96,13 @@ int main(int argc, char ** argv){
         //string filename = "refactored_data/level_" + to_string(i) + ".bin";
         string filename = string(token_) + "/level_" + to_string(i) + ".bin";
         files.push_back(filename);
+	//std::cout << filename << std::endl;
     }
 
     // jwang 08/24
-    using T = float;
+    //using T = double; //float
+    using T = float; //float
+
     using T_stream = uint32_t;
     //if(num_bitplanes > 32){
     //    num_bitplanes = 32;

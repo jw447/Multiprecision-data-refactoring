@@ -94,7 +94,12 @@ int main(int argc, char ** argv){
       //std::cout << foldername << std::endl;
       foldername = strtok(NULL, "/");
     }
+    strtok(token_, ".");
     //std::cout << token_ << std::endl;
+    
+    std::string token_str = "_" + string(token_);
+    token_ = new char[token_str.length()];
+    strcpy(token_, token_str.c_str());
     // ---------------------------------------------------
 
     double s = atof(argv[argv_id ++]);
@@ -127,7 +132,9 @@ int main(int argc, char ** argv){
         files.push_back(filename);
     }
 
-    using T = float;
+    //using T = double; //float
+    using T = float; //float
+
     using T_stream = uint32_t;
     auto decomposer = MDR::MGARDOrthoganalDecomposer<T>();
     // auto decomposer = MDR::MGARDHierarchicalDecomposer<T>();

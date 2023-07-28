@@ -92,6 +92,13 @@ namespace MDR {
             for(int i=0; i< num_levels; i++){
 		    std::cout << cc[i] <<",";
 	    }
+	    //// print level size
+            //for(int i=0; i< num_levels; i++){
+	    //        for(int j=0; j < 32; j++){
+	    //    	    std::cout << level_sizes[i][j] <<",";
+	    //        }
+	    //        std::cout << "\n";
+	    //}
 
             std::vector<uint32_t> retrieve_sizes(num_levels, 0);
             double accumulated_error = 0;
