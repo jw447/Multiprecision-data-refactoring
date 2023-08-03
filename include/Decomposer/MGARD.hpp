@@ -16,6 +16,7 @@ namespace MDR {
             std::vector<size_t> dims(dimensions.size());
             for(int i=0; i<dims.size(); i++){
                 dims[i] = dimensions[i];
+		//std::cout << dims[i] << std::endl;
             }
             decomposer.decompose(data, dims, target_level);
         }

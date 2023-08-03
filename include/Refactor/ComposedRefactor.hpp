@@ -19,31 +19,31 @@ namespace MDR {
             : decomposer(decomposer), interleaver(interleaver), encoder(encoder), compressor(compressor), collector(collector), writer(writer) {}
 
         void refactor(T const * data_, const std::vector<uint32_t>& dims, uint8_t target_level, uint8_t num_bitplanes){
-            Timer timer;
-            timer.start();
-            dimensions = dims;
-            uint32_t num_elements = 1;
-            for(const auto& dim:dimensions){
-                num_elements *= dim;
-            }
-            data = std::vector<T>(data_, data_ + num_elements);
-            // if refactor successfully
-            if(refactor(target_level, num_bitplanes)){
-                timer.end();
-                //timer.print("Refactor");
-		//std::cout << "End of Refactor \n";
-                timer.start();
-                level_num = writer.write_level_components(level_components, level_sizes);
-                timer.end();
-                //timer.print("Write");                
-            }
+		std::cout << "Refactor" << std::endl;
+		Timer timer;
+		timer.start();
+            	dimensions = dims;
+            	uint32_t num_elements = 1;
+            	for(const auto& dim:dimensions){
+			num_elements *= dim;
+            	}
+		data = std::vector<T>(data_, data_ + num_elements);
+		// if refactor successfully
+		std::cout << "Refactor" << std::endl;
+            	if(refactor(target_level, num_bitplanes)){
+            	    timer.end();
+            	    //timer.print("Refactor");
+            	    timer.start();
+            	    level_num = writer.write_level_components(level_components, level_sizes);
+            	    timer.end();
+            	}
 
-            write_metadata();
-            for(int i=0; i<level_components.size(); i++){
-                for(int j=0; j<level_components[i].size(); j++){
-                    free(level_components[i][j]);                    
-                }
-            }
+            	write_metadata();
+		for(int i=0; i<level_components.size(); i++){
+            	    for(int j=0; j<level_components[i].size(); j++){
+            	        free(level_components[i][j]);                    
+            	    }
+            	}
         }
 
         void write_metadata() const {
@@ -74,64 +74,74 @@ namespace MDR {
         }
     private:
         bool refactor(uint8_t target_level, uint8_t num_bitplanes){
-            uint8_t max_level = log2(*min_element(dimensions.begin(), dimensions.end())) - 1;
-            if(target_level > max_level){
-                std::cerr << "Target level is higher than " << max_level << std::endl;
-                return false;
-            }
-            Timer timer;
-            // decompose data hierarchically
-            timer.start();
-            decomposer.decompose(data.data(), dimensions, target_level);
-            timer.end();
-            //timer.print("Decompose");
+		std::cout << "refactor..." << std::endl;
+		uint8_t max_level = log2(*min_element(dimensions.begin(), dimensions.end())) - 1;
+            	if(target_level > max_level){
+            	    std::cerr << "Target level is higher than " << max_level << std::endl;
+            	    return false;
+            	}
+		std::cout << "testing..." << std::endl;
+            	Timer timer;
+            	// decompose data hierarchically
+            	timer.start();
+            	decomposer.decompose(data.data(), dimensions, target_level);
+            	timer.end();
+            	//timer.print("Decompose");
 
-            // encode level by level
-            level_error_bounds.clear();
-            level_squared_errors.clear();
-            level_components.clear();
-            level_sizes.clear();
-            auto level_dims = compute_level_dims(dimensions, target_level);
-            auto level_elements = compute_level_elements(level_dims, target_level);
-            std::vector<uint32_t> dims_dummy(dimensions.size(), 0);
-            SquaredErrorCollector<T> s_collector = SquaredErrorCollector<T>();
-            for(int i=0; i<=target_level; i++){
-                timer.start();
-                const std::vector<uint32_t>& prev_dims = (i == 0) ? dims_dummy : level_dims[i - 1];
-                T * buffer = (T *) malloc(level_elements[i] * sizeof(T));
-                // extract level i component
-                interleaver.interleave(data.data(), dimensions, level_dims[i], prev_dims, reinterpret_cast<T*>(buffer));
-                // compute max coefficient as level error bound
-                T level_max_error = compute_max_abs_value(reinterpret_cast<T*>(buffer), level_elements[i]);
-                level_error_bounds.push_back(level_max_error);
-                timer.end();
-                //timer.print("Interleave");
-                // collect errors
-                // auto collected_error = s_collector.collect_level_error(buffer, level_elements[i], num_bitplanes, level_max_error);
-                // level_squared_errors.push_back(collected_error);
-                // encode level data
-                timer.start();
-                int level_exp = 0;
-                frexp(level_max_error, &level_exp);
-                std::vector<uint32_t> stream_sizes;
-                std::vector<double> level_sq_err;
-                auto streams = encoder.encode(buffer, level_elements[i], level_exp, num_bitplanes, stream_sizes, level_sq_err);
-                free(buffer);
-                level_squared_errors.push_back(level_sq_err);
-                timer.end();
-                //timer.print("Encoding");
-                timer.start();
-                // lossless compression
-                uint8_t stopping_index = compressor.compress_level(streams, stream_sizes);
-                stopping_indices.push_back(stopping_index);
-                // record encoded level data and size
-                level_components.push_back(streams);
-                level_sizes.push_back(stream_sizes);
-                timer.end();
-                //timer.print("Lossless time");
-            }
-            //print_vec("level sizes", level_sizes);
-            return true;
+            	// encode level by level
+            	level_error_bounds.clear();
+            	level_squared_errors.clear();
+            	level_components.clear();
+            	level_sizes.clear();
+            	auto level_dims = compute_level_dims(dimensions, target_level);
+            	auto level_elements = compute_level_elements(level_dims, target_level);
+            	std::vector<uint32_t> dims_dummy(dimensions.size(), 0);
+            	SquaredErrorCollector<T> s_collector = SquaredErrorCollector<T>();
+		std::cout << std::to_string(target_level) << std::endl;
+            	for(int i=0; i<=target_level; i++){
+			//std::cout << "i="<< std::to_string(i) << std::endl;
+            	    timer.start();
+            	    const std::vector<uint32_t>& prev_dims = (i == 0) ? dims_dummy : level_dims[i - 1];
+            	    T * buffer = (T *) malloc(level_elements[i] * sizeof(T));
+			//std::cout << "i="<< std::to_string(i) << std::endl;
+			//std::cout << std::to_string(level_elements[i]) << std::endl;
+            	    // extract level i component
+            	    interleaver.interleave(data.data(), dimensions, level_dims[i], prev_dims, reinterpret_cast<T*>(buffer));
+			//std::cout << std::to_string(level_elements[i]) << std::endl;
+            	    // compute max coefficient as level error bound
+			std::cout << "there" << std::endl;
+            	    T level_max_error = compute_max_abs_value(reinterpret_cast<T*>(buffer), level_elements[i]);
+			std::cout << std::to_string(level_elements[i]) << std::endl;
+            	    level_error_bounds.push_back(level_max_error);
+			std::cout << "i="<< std::to_string(i) << std::endl;
+            	    timer.end();
+            	    timer.print("Interleave");
+            	    // collect errors
+            	    // auto collected_error = s_collector.collect_level_error(buffer, level_elements[i], num_bitplanes, level_max_error);
+            	    // level_squared_errors.push_back(collected_error);
+            	    // encode level data
+            	    timer.start();
+            	    int level_exp = 0;
+            	    frexp(level_max_error, &level_exp);
+            	    std::vector<uint32_t> stream_sizes;
+            	    std::vector<double> level_sq_err;
+            	    auto streams = encoder.encode(buffer, level_elements[i], level_exp, num_bitplanes, stream_sizes, level_sq_err);
+            	    free(buffer);
+            	    level_squared_errors.push_back(level_sq_err);
+            	    timer.end();
+            	    timer.print("Encoding");
+            	    timer.start();
+            	    // lossless compression
+            	    uint8_t stopping_index = compressor.compress_level(streams, stream_sizes);
+            	    stopping_indices.push_back(stopping_index);
+            	    // record encoded level data and size
+            	    level_components.push_back(streams);
+            	    level_sizes.push_back(stream_sizes);
+            	    timer.end();
+            	    timer.print("Lossless time");
+            	}
+            	print_vec("level sizes", level_sizes);
+            	return true;
         }
 
         Decomposer decomposer;
