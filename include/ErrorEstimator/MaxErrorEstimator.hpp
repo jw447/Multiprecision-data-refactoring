@@ -29,21 +29,21 @@ namespace MDR {
             //        std::cerr << num_dims << "-Dimentional error estimation not implemented." << std::endl;
             //        exit(-1);
             //}
-	    //c = 1.0 + 21.0*sqrt(3)/8;
-	    //c *= 4; // 2 more bitplane for negabinary
+    	    //c = 1.0 + 21.0*sqrt(3)/8;
+    	    //c *= 4; // 2 more bitplane for negabinary
         }
         MaxErrorEstimatorOB() : MaxErrorEstimatorOB(1) {}
 
         inline T estimate_error(T error, int level) const {
-	    //std::cout << "c=" << c << std::endl;
+            // std::cout << "c=" << c << std::endl;
             return c * error;
         }
         inline T estimate_error(T data, T reconstructed_data, int level) const {
-	    //std::cout << "c=" << c << std::endl;
+            //std::cout << "c=" << c << std::endl;
             return c * (data - reconstructed_data);
         }
         inline T estimate_error_gain(T base, T current_level_err, T next_level_err, int level) const {
-	    //std::cout << "c=" << c << std::endl;
+            //std::cout << "c=" << c << std::endl;
             return c * (current_level_err - next_level_err);
         }
         void print() const {

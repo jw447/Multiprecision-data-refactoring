@@ -16,7 +16,7 @@ namespace MDR {
             std::vector<size_t> dims(dimensions.size());
             for(int i=0; i<dims.size(); i++){
                 dims[i] = dimensions[i];
-		//std::cout << dims[i] << std::endl;
+                //std::cout << dims[i] << std::endl;
             }
             decomposer.decompose(data, dims, target_level);
         }
@@ -32,6 +32,7 @@ namespace MDR {
             std::cout << "MGARD orthogonal decomposer" << std::endl;
         }
     };
+    
     // MGARD decomposer with hierarchical basis
     template<class T>
     class MGARDHierarchicalDecomposer : public concepts::DecomposerInterface<T> {

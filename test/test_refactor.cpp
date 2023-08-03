@@ -114,8 +114,8 @@ int main(int argc, char ** argv){
     auto writer = MDR::ConcatLevelFileWriter(metadata_file, files);
     // auto writer = MDR::HPSSFileWriter(metadata_file, files, 2048, 512 * 1024 * 1024);
 
-    std::cout << "begin test" << std::endl;
+    // std::cout << "begin test" << std::endl;
     test<T>(filename, dims, target_level, num_bitplanes, decomposer, interleaver, encoder, compressor, collector, writer);
-    std::cout << "end test" << std::endl;
+    // std::cout << "end test" << std::endl;
     return 0;
 }

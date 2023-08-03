@@ -85,37 +85,38 @@ namespace MDR {
             //    }
             //    std::cout << std::endl;
             //}
-	    
-	    //c = 1.0 + 21.0*sqrt(3)/8;
+
+            //c = 1.0 + 21.0*sqrt(3)/8;
 
             int num_levels = level_sizes.size();
             for(int i=0; i< num_levels; i++){
-		    std::cout << cc[i] <<",";
-	    }
-	    //// print level size
-            //for(int i=0; i< num_levels; i++){
-	    //        for(int j=0; j < 32; j++){
-	    //    	    std::cout << level_sizes[i][j] <<",";
-	    //        }
-	    //        std::cout << "\n";
-	    //}
+                std::cout << cc[i] <<",";
+            }
+            
+            // // print level size
+            // for(int i=0; i< num_levels; i++){
+            //     for(int j=0; j < 32; j++){
+            //         std::cout << level_sizes[i][j] <<",";
+            //     }
+            //     std::cout << "\n";
+            // }
 
             std::vector<uint32_t> retrieve_sizes(num_levels, 0);
             double accumulated_error = 0;
             for(int i=0; i<num_levels; i++){
-		c = cc[i];
-		//c = 1.0 + 21.0*sqrt(3)/8;
-		c *= 4;
+        		c = cc[i];
+        		//c = 1.0 + 21.0*sqrt(3)/8;
+        		c *= 4;
                 accumulated_error += error_estimator.estimate_error(level_errors[i][index[i]], i);
-		//std::cout << "accumulated_error: " << accumulated_error << ", level_error: " << level_errors[i][index[i]] << std::endl;
+                //std::cout << "accumulated_error: " << accumulated_error << ", level_error: " << level_errors[i][index[i]] << std::endl;
             }
             std::priority_queue<UnitErrorGain, std::vector<UnitErrorGain>, CompareUnitErrorGain> heap;
             // identify minimal level
             double min_error = accumulated_error;
             for(int i=0; i<num_levels; i++){
-		c = cc[i];
-		//c = 1.0 + 21.0*sqrt(3)/8;
-		c *= 4;
+        		c = cc[i];
+        		//c = 1.0 + 21.0*sqrt(3)/8;
+        		c *= 4;
                 min_error -= error_estimator.estimate_error(level_errors[i][index[i]], i);
                 min_error += error_estimator.estimate_error(level_errors[i].back(), i);
                 // fetch the first component if index is 0
@@ -144,9 +145,9 @@ namespace MDR {
                 heap.pop();
                 int i = unit_error_gain.level;
                 int j = index[i];
-		c = cc[i];
-		//c = 1.0 + 21.0*sqrt(3)/8;
-		c *= 4;
+        		c = cc[i];
+        		//c = 1.0 + 21.0*sqrt(3)/8;
+        		c *= 4;
                 retrieve_sizes[i] += level_sizes[i][j];
                 accumulated_error -= error_estimator.estimate_error(level_errors[i][j], i);
                 accumulated_error += error_estimator.estimate_error(level_errors[i][j + 1], i);
