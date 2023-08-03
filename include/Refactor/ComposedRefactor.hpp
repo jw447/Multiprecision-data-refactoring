@@ -30,7 +30,7 @@ namespace MDR {
             data = std::vector<T>(data_, data_ + num_elements);
             // std::cout << "Refactor" << std::endl;
             
-            // if refactor successfully
+            //// if refactor successfully
             if(refactor(target_level, num_bitplanes)){
                 timer.end();
                 //timer.print("Refactor");
@@ -84,14 +84,14 @@ namespace MDR {
             }
             // std::cout << "testing..." << std::endl;
             
+            //// decompose data hierarchically
             Timer timer;
-            // decompose data hierarchically
             timer.start();
             decomposer.decompose(data.data(), dimensions, target_level);
             timer.end();
             //timer.print("Decompose");
 
-            // encode level by level
+            //// encode level by level
             level_error_bounds.clear();
             level_squared_errors.clear();
             level_components.clear();
@@ -126,7 +126,8 @@ namespace MDR {
                 //// collect errors
                 // auto collected_error = s_collector.collect_level_error(buffer, level_elements[i], num_bitplanes, level_max_error);
                 // level_squared_errors.push_back(collected_error);
-                // encode level data
+                
+		//// encode level data
                 timer.start();
                 int level_exp = 0;
                 frexp(level_max_error, &level_exp);
@@ -137,11 +138,13 @@ namespace MDR {
                 level_squared_errors.push_back(level_sq_err);
                 timer.end();
                 //timer.print("Encoding");
+
+                //// lossless compression
                 timer.start();
-                // lossless compression
                 uint8_t stopping_index = compressor.compress_level(streams, stream_sizes);
                 stopping_indices.push_back(stopping_index);
-                // record encoded level data and size
+
+                //// record encoded level data and size
                 level_components.push_back(streams);
                 level_sizes.push_back(stream_sizes);
                 timer.end();

@@ -1,0 +1,1 @@
+/sw/summit/gcc/9.3.0-2/bin/g++ -g -O3 -rdynamic CMakeFiles/test_decomposer.dir/test_decomposer.cpp.o -o test_decomposer  -Wl,-rpath,/gpfs/alpine/proj-shared/csc143/jwang/DNN_Mgard/ExternalDependencies/Multiprecision-data-refactoring/external/SZ3/build/src ../../external/SZ3/build/src/libSZ3.so -lzstd 
