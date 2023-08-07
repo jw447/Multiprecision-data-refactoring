@@ -19,6 +19,7 @@ namespace MDR {
                     for(int k=0; k<dims_fine[2]; k++){
                         if((i < dims_coasre[0]) && (j < dims_coasre[1]) && (k < dims_coasre[2]))
                             continue;
+			buffer[count ++] = data[i*dim0_offset + j*dim1_offset + k];
                     }
                 }
             }
