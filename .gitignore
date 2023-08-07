@@ -1,0 +1,8 @@
+.DS_Store
+
+# ignore external dependencies
+external
+#external/MGARDx
+#external/SZ
+#external/SZ3
+#external/compression_utils
