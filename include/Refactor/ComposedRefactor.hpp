@@ -19,7 +19,7 @@ namespace MDR {
             : decomposer(decomposer), interleaver(interleaver), encoder(encoder), compressor(compressor), collector(collector), writer(writer) {}
 
         void refactor(T const * data_, const std::vector<uint32_t>& dims, uint8_t target_level, uint8_t num_bitplanes){
-            std::cout << "Refactor" << std::endl;
+            //std::cout << "Refactor" << std::endl;
             Timer timer;
             timer.start();
             dimensions = dims;
@@ -28,7 +28,7 @@ namespace MDR {
                 num_elements *= dim;
             }
             data = std::vector<T>(data_, data_ + num_elements);
-            std::cout << "Refactor" << std::endl;
+            //std::cout << "Refactor" << std::endl;
             
             //// if refactor successfully
             if(refactor(target_level, num_bitplanes)){
@@ -76,20 +76,20 @@ namespace MDR {
 
     private:
         bool refactor(uint8_t target_level, uint8_t num_bitplanes){
-            std::cout << "refactor..." << std::endl;
+            //std::cout << "refactor..." << std::endl;
             uint8_t max_level = log2(*min_element(dimensions.begin(), dimensions.end())) - 1;
             if(target_level > max_level){
                 std::cerr << "Target level is higher than " << max_level << std::endl;
                 return false;
             }
-            std::cout << "testing..." << std::endl;
+            //std::cout << "testing..." << std::endl;
             
             //// decompose data hierarchically
             Timer timer;
             timer.start();
             decomposer.decompose(data.data(), dimensions, target_level);
             timer.end();
-            timer.print("Decompose");
+            //timer.print("Decompose");
 
             //// encode level by level
             level_error_bounds.clear();
@@ -102,25 +102,25 @@ namespace MDR {
             SquaredErrorCollector<T> s_collector = SquaredErrorCollector<T>();
             // std::cout << std::to_string(target_level) << std::endl;
             
-            std::cout << "target_level="<< std::to_string(target_level) << std::endl;
+            //std::cout << "target_level="<< std::to_string(target_level) << std::endl;
             for(int i=0; i<=target_level; i++){
-                std::cout << "i="<< std::to_string(i) << std::endl;
+                //std::cout << "i="<< std::to_string(i) << std::endl;
                 timer.start();
                 const std::vector<uint32_t>& prev_dims = (i == 0) ? dims_dummy : level_dims[i - 1];
                 T * buffer = (T *) malloc(level_elements[i] * sizeof(T));
-                std::cout << std::to_string(level_elements[i]) << std::endl;
+                //std::cout << std::to_string(level_elements[i]) << std::endl;
                 
                 //// extract level i component
                 interleaver.interleave(data.data(), dimensions, level_dims[i], prev_dims, reinterpret_cast<T*>(buffer));
                 //std::cout << std::to_string(level_elements[i]) << std::endl;
                 
                 //// compute max coefficient as level error bound
-                 std::cout << "there" << std::endl;
+                //std::cout << "there" << std::endl;
                 T level_max_error = compute_max_abs_value(reinterpret_cast<T*>(buffer), level_elements[i]);
                 // std::cout << std::to_string(level_elements[i]) << std::endl;
                 level_error_bounds.push_back(level_max_error);
                 timer.end();
-                timer.print("Interleave");
+                //timer.print("Interleave");
                 
                 //// collect errors
                 // auto collected_error = s_collector.collect_level_error(buffer, level_elements[i], num_bitplanes, level_max_error);
@@ -136,7 +136,7 @@ namespace MDR {
                 free(buffer);
                 level_squared_errors.push_back(level_sq_err);
                 timer.end();
-                timer.print("Encoding");
+                //timer.print("Encoding");
 
                 //// lossless compression
                 timer.start();
@@ -147,7 +147,7 @@ namespace MDR {
                 level_components.push_back(streams);
                 level_sizes.push_back(stream_sizes);
                 timer.end();
-                timer.print("Lossless time");
+                //timer.print("Lossless time");
             }
             print_vec("level sizes", level_sizes);
             return true;

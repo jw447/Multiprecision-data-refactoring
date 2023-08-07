@@ -17,11 +17,11 @@ template <class T, class Refactor>
 void evaluate(const vector<T>& data, const vector<uint32_t>& dims, int target_level, int num_bitplanes, Refactor refactor){
     struct timespec start, end;
     int err = 0;
-    cout << "Start eval" << endl;
+    //cout << "Start eval" << endl;
     err = clock_gettime(CLOCK_REALTIME, &start);
     refactor.refactor(data.data(), dims, target_level, num_bitplanes);
     err = clock_gettime(CLOCK_REALTIME, &end);
-    cout << "Refactor time: " << (double)(end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec)/(double)1000000000 << "s" << endl;
+    //cout << "Refactor time: " << (double)(end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec)/(double)1000000000 << "s" << endl;
 }
 
 template <class T, class Decomposer, class Interleaver, class Encoder, class Compressor, class ErrorCollector, class Writer>
@@ -29,9 +29,9 @@ void test(string filename, const vector<uint32_t>& dims, int target_level, int n
     auto refactor = MDR::ComposedRefactor<T, Decomposer, Interleaver, Encoder, Compressor, ErrorCollector, Writer>(decomposer, interleaver, encoder, compressor, collector, writer);
     size_t num_elements = 0;
     auto data = MGARD::readfile<T>(filename.c_str(), num_elements);
-    cout << "begin eval" << std::endl;
+    //cout << "begin eval" << std::endl;
     evaluate(data, dims, target_level, num_bitplanes, refactor);
-    cout << "end of eval<float>" << endl;
+    //cout << "end of eval<float>" << endl;
 }
 
 int main(int argc, char ** argv){
@@ -49,7 +49,7 @@ int main(int argc, char ** argv){
     vector<uint32_t> dims(num_dims, 0);
     for(int i=0; i<num_dims; i++){
         dims[i] = atoi(argv[argv_id ++]);
-	std::cout << dims[i] << std::endl;
+	//std::cout << dims[i] << std::endl;
     }
     
     // ----------- extract foldername --------------------
@@ -115,8 +115,8 @@ int main(int argc, char ** argv){
     auto writer = MDR::ConcatLevelFileWriter(metadata_file, files);
     // auto writer = MDR::HPSSFileWriter(metadata_file, files, 2048, 512 * 1024 * 1024);
 
-    std::cout << "begin test" << std::endl;
+    //std::cout << "begin test" << std::endl;
     test<T>(filename, dims, target_level, num_bitplanes, decomposer, interleaver, encoder, compressor, collector, writer);
-    std::cout << "end test" << std::endl;
+    //std::cout << "end test" << std::endl;
     return 0;
 }
