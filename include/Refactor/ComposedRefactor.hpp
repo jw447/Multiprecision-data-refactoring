@@ -149,7 +149,7 @@ namespace MDR {
                 timer.end();
                 //timer.print("Lossless time");
             }
-            print_vec("level sizes", level_sizes);
+            //print_vec("level sizes", level_sizes);
             return true;
         }
 
