@@ -4,6 +4,7 @@
 #include "SizeInterpreterInterface.hpp"
 #include <queue>
 #include "RefactorUtils.hpp"
+#include <iomanip>
 
 // inorder and round-robin size interpreter
 
@@ -62,7 +63,7 @@ namespace MDR {
                 std::cout << i;
             }
             std::cout << std::endl;
-            std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << ", "; //<< std::endl;
+            std::cout << "Requested tolerance = " << std::setprecision (15) << tolerance << ", estimated error = " << std::setprecision (15) << accumulated_error << ", "; //<< std::endl;
             return retrieve_sizes;
         }
         void print() const {
