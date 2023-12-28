@@ -1,4 +1,4 @@
-# Install script for directory: /gpfs/alpine/proj-shared/csc143/jwang/DNN_Mgard/ExternalDependencies/Multiprecision-data-refactoring/test
+# Install script for directory: /lustre/orion/csc143/proj-shared/jwang/DNN_Mgard/ExternalDependencies/Multiprecision-data-refactoring/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

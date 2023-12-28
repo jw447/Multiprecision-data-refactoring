@@ -1,4 +1,4 @@
-set(CMAKE_CXX_COMPILER "/sw/summit/gcc/9.3.0-2/bin/g++")
+set(CMAKE_CXX_COMPILER "/sw/andes/gcc/9.3.0/bin/g++")
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_COMPILER_VERSION "9.3.0")
@@ -11,6 +11,7 @@ set(CMAKE_CXX11_COMPILE_FEATURES "cxx_std_11;cxx_alias_templates;cxx_alignas;cxx
 set(CMAKE_CXX14_COMPILE_FEATURES "cxx_std_14;cxx_aggregate_default_initializers;cxx_attribute_deprecated;cxx_binary_literals;cxx_contextual_conversions;cxx_decltype_auto;cxx_digit_separators;cxx_generic_lambdas;cxx_lambda_init_captures;cxx_relaxed_constexpr;cxx_return_type_deduction;cxx_variable_templates")
 set(CMAKE_CXX17_COMPILE_FEATURES "cxx_std_17")
 set(CMAKE_CXX20_COMPILE_FEATURES "cxx_std_20")
+set(CMAKE_CXX23_COMPILE_FEATURES "")
 
 set(CMAKE_CXX_PLATFORM_ID "Linux")
 set(CMAKE_CXX_SIMULATE_ID "")
@@ -21,10 +22,10 @@ set(CMAKE_CXX_SIMULATE_VERSION "")
 
 
 set(CMAKE_AR "/usr/bin/ar")
-set(CMAKE_CXX_COMPILER_AR "/sw/summit/gcc/9.3.0-2/bin/gcc-ar")
+set(CMAKE_CXX_COMPILER_AR "/sw/andes/gcc/9.3.0/bin/gcc-ar")
 set(CMAKE_RANLIB "/usr/bin/ranlib")
-set(CMAKE_CXX_COMPILER_RANLIB "/sw/summit/gcc/9.3.0-2/bin/gcc-ranlib")
-set(CMAKE_LINKER "/sw/summit/xalt/1.2.1/bin/ld")
+set(CMAKE_CXX_COMPILER_RANLIB "/sw/andes/gcc/9.3.0/bin/gcc-ranlib")
+set(CMAKE_LINKER "/usr/bin/ld")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCXX 1)
 set(CMAKE_CXX_COMPILER_LOADED 1)
@@ -43,7 +44,7 @@ if(CMAKE_COMPILER_IS_MINGW)
   set(MINGW 1)
 endif()
 set(CMAKE_CXX_COMPILER_ID_RUN 1)
-set(CMAKE_CXX_SOURCE_FILE_EXTENSIONS C;M;c++;cc;cpp;cxx;m;mm;CPP)
+set(CMAKE_CXX_SOURCE_FILE_EXTENSIONS C;M;c++;cc;cpp;cxx;m;mm;mpp;CPP)
 set(CMAKE_CXX_IGNORE_EXTENSIONS inl;h;hpp;HPP;H;o;O;obj;OBJ;def;DEF;rc;RC)
 
 foreach (lang C OBJC OBJCXX)
@@ -60,6 +61,7 @@ set(CMAKE_CXX_LINKER_PREFERENCE_PROPAGATES 1)
 # Save compiler ABI information.
 set(CMAKE_CXX_SIZEOF_DATA_PTR "8")
 set(CMAKE_CXX_COMPILER_ABI "ELF")
+set(CMAKE_CXX_BYTE_ORDER "LITTLE_ENDIAN")
 set(CMAKE_CXX_LIBRARY_ARCHITECTURE "")
 
 if(CMAKE_CXX_SIZEOF_DATA_PTR)
@@ -83,7 +85,7 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/hdf5-1.10.7-erpzjzv6dakrblzacmwiuyrgg54wawqa/include;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/adios2-2.7.1-co24zackzpgozynhz4otsmkjnjh3dsah/include;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/c-blosc-1.21.0-gudk3tcyn3yx4tqqmjsxlbmazftvhbve/include;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/zstd-1.5.0-nyznyntrichkgdzue3lceevqqgvyzcau/include;/sw/summit/cuda/11.0.2/include;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/spectrum-mpi-10.4.0.3-20210112-6depextb6p6ulrvmehgtbskbmcsyhtdi/include;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-8.3.1/darshan-runtime-3.4.0-kjycgqekqo72q2f4xzrpwcnb6j4kl4ed/include;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/include/c++/9.3.0;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/include/c++/9.3.0/powerpc64le-unknown-linux-gnu;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/include/c++/9.3.0/backward;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/lib/gcc/powerpc64le-unknown-linux-gnu/9.3.0/include;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/lib/gcc/powerpc64le-unknown-linux-gnu/9.3.0/include-fixed;/usr/local/include;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/include;/usr/include")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-9.3.0/openmpi-4.0.4-skxqfeiocc5jtuw3y6dwtnxzzqjp5ffs/include;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/include/c++/9.3.0;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/include/c++/9.3.0/x86_64-pc-linux-gnu;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/include/c++/9.3.0/backward;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0/include-fixed;/usr/local/include;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/include;/usr/include")
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc_s;gcc;c;gcc_s;gcc")
-set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/lib/gcc/powerpc64le-unknown-linux-gnu/9.3.0;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/lib/gcc;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/adios2-2.7.1-co24zackzpgozynhz4otsmkjnjh3dsah/lib64;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/lib64;/lib64;/usr/lib64;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/hdf5-1.10.7-erpzjzv6dakrblzacmwiuyrgg54wawqa/lib;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/c-blosc-1.21.0-gudk3tcyn3yx4tqqmjsxlbmazftvhbve/lib;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/zstd-1.5.0-nyznyntrichkgdzue3lceevqqgvyzcau/lib;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-9.3.0/spectrum-mpi-10.4.0.3-20210112-6depextb6p6ulrvmehgtbskbmcsyhtdi/lib;/sw/summit/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-8.3.1/darshan-runtime-3.4.0-kjycgqekqo72q2f4xzrpwcnb6j4kl4ed/lib;/autofs/nccs-svm1_sw/summit/gcc/9.3.0-2/lib")
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/autofs/nccs-svm1_sw/andes/gcc/9.3.0/lib/gcc/x86_64-pc-linux-gnu/9.3.0;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/lib/gcc;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/lib64;/lib64;/usr/lib64;/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-9.3.0/openmpi-4.0.4-skxqfeiocc5jtuw3y6dwtnxzzqjp5ffs/lib;/autofs/nccs-svm1_sw/andes/gcc/9.3.0/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

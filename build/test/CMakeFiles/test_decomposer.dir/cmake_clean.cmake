@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test_decomposer.dir/test_decomposer.cpp.o"
+  "CMakeFiles/test_decomposer.dir/test_decomposer.cpp.o.d"
   "test_decomposer"
   "test_decomposer.pdb"
 )

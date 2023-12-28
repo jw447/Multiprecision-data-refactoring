@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test_refactor.dir/test_refactor.cpp.o"
+  "CMakeFiles/test_refactor.dir/test_refactor.cpp.o.d"
   "test_refactor"
   "test_refactor.pdb"
 )

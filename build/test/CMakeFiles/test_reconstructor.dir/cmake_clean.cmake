@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/test_reconstructor.dir/test_reconstructor.cpp.o"
+  "CMakeFiles/test_reconstructor.dir/test_reconstructor.cpp.o.d"
   "test_reconstructor"
   "test_reconstructor.pdb"
 )
