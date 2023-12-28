@@ -4,8 +4,12 @@
 #include "SizeInterpreterInterface.hpp"
 #include <queue>
 #include "RefactorUtils.hpp"
+#include <iomanip>
 
 // inorder and round-robin size interpreter
+
+extern std::vector<double> cc;
+extern double c;
 
 namespace MDR {
     struct UnitErrorGain{
@@ -59,7 +63,7 @@ namespace MDR {
                 std::cout << i;
             }
             std::cout << std::endl;
-            std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
+            std::cout << "Requested tolerance = " << std::setprecision (15) << tolerance << ", estimated error = " << std::setprecision (15) << accumulated_error << ", "; //<< std::endl;
             return retrieve_sizes;
         }
         void print() const {
@@ -68,7 +72,7 @@ namespace MDR {
     private:
         ErrorEstimator error_estimator;
     };
-    // greedy bit-plane retrieval with sign exculsion (excluding the first component)
+    // greedy bit-plane retrieval with sign exculsion (excluding the first component) - default - jwang 08/24
     template<class ErrorEstimator>
     class SignExcludeGreedyBasedSizeInterpreter : public concepts::SizeInterpreterInterface {
     public:
@@ -76,22 +80,44 @@ namespace MDR {
             error_estimator = e;
         }
         std::vector<uint32_t> interpret_retrieve_size(const std::vector<std::vector<uint32_t>>& level_sizes, const std::vector<std::vector<double>>& level_errors, double tolerance, std::vector<uint8_t>& index) const {
-            for(int i=0; i<level_errors.size(); i++){
-                for(int j=0; j<level_errors[i].size(); j++){
-                    std::cout << level_errors[i][j] << " ";
-                }
-                std::cout << std::endl;
-            }
+            //for(int i=0; i<level_errors.size(); i++){
+            //    for(int j=0; j<level_errors[i].size(); j++){
+            //        std::cout << level_errors[i][j] << " ";
+            //    }
+            //    std::cout << std::endl;
+            //}
+
+            //c = 1.0 + 21.0*sqrt(3)/8;
+
             int num_levels = level_sizes.size();
+            for(int i=0; i< num_levels; i++){
+                std::cout << cc[i] <<",";
+            }
+            
+            // // print level size
+            // for(int i=0; i< num_levels; i++){
+            //     for(int j=0; j < 32; j++){
+            //         std::cout << level_sizes[i][j] <<",";
+            //     }
+            //     std::cout << "\n";
+            // }
+
             std::vector<uint32_t> retrieve_sizes(num_levels, 0);
             double accumulated_error = 0;
             for(int i=0; i<num_levels; i++){
+        		c = cc[i];
+        		//c = 1.0 + 21.0*sqrt(3)/8;
+        		c *= 4;
                 accumulated_error += error_estimator.estimate_error(level_errors[i][index[i]], i);
+                //std::cout << "accumulated_error: " << accumulated_error << ", level_error: " << level_errors[i][index[i]] << std::endl;
             }
             std::priority_queue<UnitErrorGain, std::vector<UnitErrorGain>, CompareUnitErrorGain> heap;
             // identify minimal level
             double min_error = accumulated_error;
             for(int i=0; i<num_levels; i++){
+        		c = cc[i];
+        		//c = 1.0 + 21.0*sqrt(3)/8;
+        		c *= 4;
                 min_error -= error_estimator.estimate_error(level_errors[i][index[i]], i);
                 min_error += error_estimator.estimate_error(level_errors[i].back(), i);
                 // fetch the first component if index is 0
@@ -100,7 +126,7 @@ namespace MDR {
                     accumulated_error -= error_estimator.estimate_error(level_errors[i][index[i]], i);
                     accumulated_error += error_estimator.estimate_error(level_errors[i][index[i] + 1], i);
                     index[i] ++;
-                    std::cout << i;
+                    //std::cout << i;
                 }
                 // push the next one
                 if(index[i] != level_sizes[i].size()){
@@ -120,6 +146,9 @@ namespace MDR {
                 heap.pop();
                 int i = unit_error_gain.level;
                 int j = index[i];
+        		c = cc[i];
+        		//c = 1.0 + 21.0*sqrt(3)/8;
+        		c *= 4;
                 retrieve_sizes[i] += level_sizes[i][j];
                 accumulated_error -= error_estimator.estimate_error(level_errors[i][j], i);
                 accumulated_error += error_estimator.estimate_error(level_errors[i][j + 1], i);
@@ -131,10 +160,11 @@ namespace MDR {
                     double error_gain = error_estimator.estimate_error_gain(accumulated_error, level_errors[i][index[i]], level_errors[i][index[i] + 1], i);
                     heap.push(UnitErrorGain(error_gain / level_sizes[i][index[i]], i));
                 }
-                std::cout << i;
+                //std::cout << i;
             }
-            std::cout << std::endl;
-            std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
+            //std::cout << std::endl;
+            //std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
+            std::cout << "Requested_tolerance," << tolerance << ",estimated_error," << accumulated_error << ","; //<< std::endl;
             return retrieve_sizes;
         }
         void print() const {
@@ -213,9 +243,9 @@ namespace MDR {
                 if(index[i] != level_sizes[i].size()){
                     heap.push(estimated_efficiency(accumulated_error, index[i], i, level_errors[i], level_sizes[i]));
                 }
-                for(int k=0; k<num; k++) std::cout << i;
+                //for(int k=0; k<num; k++) std::cout << i;
             }
-            std::cout << std::endl;
+            //std::cout << std::endl;
             std::cout << "Requested tolerance = " << tolerance << ", estimated error = " << accumulated_error << std::endl;
             return retrieve_sizes;
         }

@@ -3,6 +3,8 @@
 
 #include "ErrorEstimatorInterface.hpp"
 
+double c = 0;
+
 namespace MDR {
     template<class T>
     class MaxErrorEstimator : public concepts::ErrorEstimatorInterface<T>{
@@ -13,31 +15,35 @@ namespace MDR {
     class MaxErrorEstimatorOB : public MaxErrorEstimator<T> {
     public:
         MaxErrorEstimatorOB(int num_dims){
-            switch(num_dims){
-                case 1:
-                    c = 1.0 + sqrt(3)/2;
-                    break;
-                case 2:
-                    c = 1.0 + 9.0/4;
-                    break;
-                case 3:
-                    c = 1.0 + 21.0*sqrt(3)/8;
-                    break;
-                default:
-                    std::cerr << num_dims << "-Dimentional error estimation not implemented." << std::endl;
-                    exit(-1);
-            }
-	    c *= 4; // 2 more bitplane for negabinary
+            //switch(num_dims){
+            //    case 1:
+            //        c = 1.0 + sqrt(3)/2;
+            //        break;
+            //    case 2:
+            //        c = 1.0 + 9.0/4;
+            //        break;
+            //    case 3:
+            //        c = 1.0 + 21.0*sqrt(3)/8;
+            //        break;
+            //    default:
+            //        std::cerr << num_dims << "-Dimentional error estimation not implemented." << std::endl;
+            //        exit(-1);
+            //}
+    	    //c = 1.0 + 21.0*sqrt(3)/8;
+    	    //c *= 4; // 2 more bitplane for negabinary
         }
         MaxErrorEstimatorOB() : MaxErrorEstimatorOB(1) {}
 
         inline T estimate_error(T error, int level) const {
+            // std::cout << "c=" << c << std::endl;
             return c * error;
         }
         inline T estimate_error(T data, T reconstructed_data, int level) const {
+            //std::cout << "c=" << c << std::endl;
             return c * (data - reconstructed_data);
         }
         inline T estimate_error_gain(T base, T current_level_err, T next_level_err, int level) const {
+            //std::cout << "c=" << c << std::endl;
             return c * (current_level_err - next_level_err);
         }
         void print() const {
@@ -45,7 +51,7 @@ namespace MDR {
         }
     private:
         // derived constant
-        T c = 0;
+        //T c = 0;
     };
     // max error estimator for hierarchical basis
     // c = 1 as all the operations are linear

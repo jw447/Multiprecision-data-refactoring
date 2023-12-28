@@ -231,6 +231,8 @@ queue
 -
 RefactorUtils.hpp
 ../include/SizeInterpreter/RefactorUtils.hpp
+iomanip
+-
 
 ../include/SizeInterpreter/SizeInterpreter.hpp
 BasicSizeInterpreter.hpp
